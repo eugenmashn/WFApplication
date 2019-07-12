@@ -115,6 +115,10 @@
     <Compile Include="Migrations\201907111346333_Rename.Designer.cs">
       <DependentUpon>201907111346333_Rename.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907121110138_onetomany.cs" />
+    <Compile Include="Migrations\201907121110138_onetomany.Designer.cs">
+      <DependentUpon>201907121110138_onetomany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Weekend.cs" />
     <Compile Include="Models\Vacation.cs" />
@@ -168,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907111346333_Rename.resx">
       <DependentUpon>201907111346333_Rename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907121110138_onetomany.resx">
+      <DependentUpon>201907121110138_onetomany.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -62,7 +62,7 @@ namespace WFAplicationVacation
         public IEnumerable<TEntity> Get(Func<TEntity, bool> predicate) {
             return _dbSet.Where(predicate).ToList();
         }
-        public IEnumerable<TEntity> GetSort(Func<TEntity,string> predicate)
+        public IEnumerable<TEntity> GetSort(Func<TEntity,Guid?> predicate)
         {
             return _dbSet.AsNoTracking().OrderBy(predicate).ToList();
         }

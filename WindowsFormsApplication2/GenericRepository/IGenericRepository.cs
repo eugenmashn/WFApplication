@@ -16,7 +16,7 @@ namespace WFAplicationVacation
         void Remove(TEntity item);
         int Count(Func<TEntity, bool> predicate);
         int Count();
-        IEnumerable<TEntity> GetSort(Func<TEntity, string> predicate);
+        IEnumerable<TEntity> GetSort(Func<TEntity, Guid?> predicate);
         void Update(TEntity item);
     }
 }

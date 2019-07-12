@@ -122,7 +122,7 @@ namespace WFAplicationVacation
                 MessageBox.Show("don`t have weekend!!!");
                 return;
             }
-            Team team  = EFTeams.FindById(i=>i.TeamName==person.TeamName);
+            Team team  = EFTeams.FindById(i=>i.TeamName==person.Team.TeamName);
             if (team == null)
                 return;
             int Daysu = person.Days;
@@ -133,7 +133,7 @@ namespace WFAplicationVacation
             holydayn.IndexDate = false;
             holydayn.SecontDate = dateTimePickerSecondDate.Value;
            
-            if ((CountTeam(person.TeamName) - CountWeekend(holydayn.FirstDate, holydayn.SecontDate, person.TeamName) <=team.MinNumberWorkers)&&((int)team.MinNumberWorkers!=0))
+            if ((CountTeam(person.Team.TeamName) - CountWeekend(holydayn.FirstDate, holydayn.SecontDate, person.Team.TeamName) <=team.MinNumberWorkers)&&((int)team.MinNumberWorkers!=0))
             {
                 MessageBox.Show("Date busy");
                 return;
@@ -152,11 +152,11 @@ namespace WFAplicationVacation
                 i = i.AddDays(1);
             }
            
-            holydayn.TeamName = person.TeamName;
+            holydayn.TeamName = person.Team.TeamName;
             holydayn.Days = IndexDay;
             Daysu = person.Days-holydayn.Days;
             person.Days = Daysu;
-            if (CountTeam(person.TeamName) - CountWeekend(holydayn.FirstDate, holydayn.SecontDate, person.TeamName) <= team.MinNumberWorkers && team.MinNumberWorkers!=0)
+            if (CountTeam(person.Team.TeamName) - CountWeekend(holydayn.FirstDate, holydayn.SecontDate, person.Team.TeamName) <= team.MinNumberWorkers && team.MinNumberWorkers!=0)
             {
                 MessageBox.Show("Date busy");
                 return;
@@ -176,7 +176,7 @@ namespace WFAplicationVacation
         }
         private int CountTeam(string TeamName)
         {
-            List<Person> list = workers.Get(i => i.TeamName == TeamName).ToList();
+            List<Person> list = workers.Get(i => i.Team.TeamName == TeamName).ToList();
             return list.Count;
         }
         private Vacation getvacation;

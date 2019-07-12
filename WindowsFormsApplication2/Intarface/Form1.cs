@@ -21,11 +21,12 @@ namespace WFAplicationVacation
         EFGenericRepository<Weekend> holydays = new EFGenericRepository<Weekend>(new WorkerContext());
         EFGenericRepository<Team> EFtems = new EFGenericRepository<Team>(new WorkerContext());
 
-
+      
         public Form1()
         {
             InitializeComponent();
-            PersonGridView.DataSource = workers.GetSort (u => u.TeamName);
+            
+            PersonGridView.DataSource = workers.GetSort (u => u.TeamId);
           this.PersonGridView.RowPrePaint += new DataGridViewRowPrePaintEventHandler(this.PaintRowrsFormOne);
         }
 
@@ -41,8 +42,9 @@ namespace WFAplicationVacation
             DialogResult result = addForm.ShowDialog(this);
             if (result == DialogResult.Cancel)
                 return;
-          
+            Person person = addForm.PersonGet;
             workers.Create(addForm.PersonGet);
+       
             evenstb();
             addForm.Close();
         }
@@ -143,10 +145,20 @@ namespace WFAplicationVacation
       
         void evenstb()
         {
-           /* workers = new EFGenericRepository<Person>(new WorkerContext());
-            vacations = new EFGenericRepository<Vacation>(new WorkerContext());*/
+            /* workers = new EFGenericRepository<Person>(new WorkerContext());
+             vacations = new EFGenericRepository<Vacation>(new WorkerContext());*/
+            Guid Id = SearcId();
+            PersonGridView.MultiSelect = true;
             PersonGridView.DataSource = null;
-            PersonGridView.DataSource = workers.GetSort(u => u.TeamName);
+            PersonGridView.DataSource = workers.GetSort(u => u.Team.Id);
+            foreach (DataGridViewRow rows in PersonGridView.Rows) {
+                if ((Guid)rows.Cells[0].Value == Id) {
+                    rows.Selected = true;
+               //     PersonGridView.CurrentCell =rows.Cells[0];
+
+                }
+            }
+          
         }
         public Guid SearcId()
         {
@@ -218,7 +230,7 @@ namespace WFAplicationVacation
             return Count;
         }
         private int CountTeam(string TeamName) {
-            List<Person> list = workers.Get(i => i.TeamName == TeamName).ToList();
+            List<Person> list = workers.Get(i => i.Team.TeamName == TeamName).ToList();
             return list.Count;
         }
 
@@ -253,13 +265,9 @@ namespace WFAplicationVacation
         public void PaintRowrsFormOne(object sender, EventArgs e)
         {
             List<Person> persons = workers.Get().ToList();
-           List<string> teams=new List<string>() ;
-            foreach (Person person in persons)
-            {
-                if(!teams.Contains(person.TeamName))
-                      teams.Add(person.TeamName);
-            }
-            teams.Sort();
+           List<Team> teams=EFtems.GetSort(i=>i.Id).ToList();
+           
+          
             Color[] colors = new Color[5];
             colors[0] = ColorTranslator.FromHtml("#87CEEB");
             colors[1] = ColorTranslator.FromHtml("#7B68EE");
@@ -274,7 +282,7 @@ namespace WFAplicationVacation
                 
 
 
-                if (row.Cells[3].Value.ToString() == teams[indexColor])
+                if ((Guid)row.Cells[6].Value == teams[indexColor].Id)
                 {
                     row.DefaultCellStyle.BackColor = colors[indexColor];
                  

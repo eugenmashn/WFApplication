@@ -12,8 +12,10 @@ namespace WFAplicationVacation
         public int Year { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
-        public string TeamName { get; set; }
         public int Days { get; set; }
+
+        public Guid? TeamId { get; set; }
+        public virtual Team Team { get; set; }
         public ICollection<Vacation> HolyDays { get; set; } = new List<Vacation>();
 
     }

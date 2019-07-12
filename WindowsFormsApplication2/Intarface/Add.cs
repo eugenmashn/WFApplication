@@ -29,14 +29,7 @@ namespace WFAplicationVacation
                 comboBox1.Items.Add(team.TeamName);
             }
     
-            people.Id = Guid.NewGuid();
-            people.Name = textBox1.Text;
-            people.LastName =textBox2.Text;
-            people.Days = (int)numericUpDown1.Value;
-            people.Year = (int)numericUpDown2.Value;
-            people.TeamName = comboBox1.Text;
-            this.PersonGet = people;
- 
+            
         }
         private Person GetPerson;
         public Person PersonGet {
@@ -60,8 +53,7 @@ namespace WFAplicationVacation
             people.LastName = textBox2.Text;
             people.Days = (int)numericUpDown1.Value;
             people.Year = (int)numericUpDown2.Value;
-            people.TeamName = comboBox1.Text;
-      
+            people.TeamId = EFtems.FindById(i => i.TeamName == comboBox1.Text).Id; 
             this.PersonGet = people;
             this.Hide();
         }

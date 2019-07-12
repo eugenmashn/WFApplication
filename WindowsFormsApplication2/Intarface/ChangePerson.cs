@@ -30,7 +30,7 @@ namespace WFAplicationVacation
             {
                 comboBoxTeamaName.Items.Add(team.TeamName);
             }
-            comboBoxTeamaName.Text = person.TeamName;
+            comboBoxTeamaName.Text = person.Team.TeamName;
             numericUpDownDays.Value = person.Days;
             numericUpDownYear.Value = person.Year;
 
@@ -48,7 +48,7 @@ namespace WFAplicationVacation
             person.LastName = textBoxLastName.Text;
             person.Days = (int)numericUpDownDays.Value;
             person.Year = (int)numericUpDownYear.Value;
-            person.TeamName = comboBoxTeamaName.Text;
+            person.TeamId = EFtems.FindById(i => i.TeamName == comboBoxTeamaName.Text).Id; ;
            workers.Update(person);
             List<Vacation> PersonVacations = vacations.Get(y => y.Peopleid == person.Id).ToList();
             if (PersonVacations.Count() == 0)

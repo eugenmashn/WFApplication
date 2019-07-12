@@ -45,15 +45,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button13 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.peopleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.personBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.TeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Days = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TeamId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Days = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.peopleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.personBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PersonGridView)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).BeginInit();
@@ -165,7 +166,6 @@
             // PersonGridView
             // 
             this.PersonGridView.AllowUserToAddRows = false;
-            this.PersonGridView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PersonGridView.AutoGenerateColumns = false;
             this.PersonGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.PersonGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -175,7 +175,8 @@
             this.lastNameDataGridViewTextBoxColumn,
             this.TeamName,
             this.yearDataGridViewTextBoxColumn,
-            this.Days});
+            this.Days,
+            this.TeamId});
             this.PersonGridView.DataSource = this.peopleBindingSource;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -185,11 +186,11 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.PersonGridView.DefaultCellStyle = dataGridViewCellStyle1;
-            this.PersonGridView.Location = new System.Drawing.Point(12, 12);
+            this.PersonGridView.Location = new System.Drawing.Point(154, 29);
             this.PersonGridView.Name = "PersonGridView";
             this.PersonGridView.ReadOnly = true;
             this.PersonGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PersonGridView.Size = new System.Drawing.Size(666, 230);
+            this.PersonGridView.Size = new System.Drawing.Size(453, 230);
             this.PersonGridView.TabIndex = 11;
             this.PersonGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PersonGridView_CellContentClick);
             // 
@@ -244,17 +245,28 @@
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.ShowNameTeam);
             // 
-            // peopleBindingSource
+            // TeamName
             // 
-            this.peopleBindingSource.DataSource = typeof(WFAplicationVacation.Person);
+            this.TeamName.DataPropertyName = "TeamId";
+            this.TeamName.HeaderText = "TeamName";
+            this.TeamName.Name = "TeamName";
+            this.TeamName.ReadOnly = true;
+            this.TeamName.Visible = false;
             // 
-            // personBindingSource1
+            // Days
             // 
-            this.personBindingSource1.DataSource = typeof(WFAplicationVacation.Person);
+            this.Days.DataPropertyName = "Days";
+            this.Days.HeaderText = "Days";
+            this.Days.Name = "Days";
+            this.Days.ReadOnly = true;
             // 
-            // personBindingSource
+            // TeamId
             // 
-            this.personBindingSource.DataSource = typeof(WFAplicationVacation.Person);
+            this.TeamId.DataPropertyName = "TeamId";
+            this.TeamId.HeaderText = "TeamId";
+            this.TeamId.Name = "TeamId";
+            this.TeamId.ReadOnly = true;
+            this.TeamId.Visible = false;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -278,13 +290,6 @@
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
             this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // TeamName
-            // 
-            this.TeamName.DataPropertyName = "TeamName";
-            this.TeamName.HeaderText = "TeamName";
-            this.TeamName.Name = "TeamName";
-            this.TeamName.ReadOnly = true;
-            // 
             // yearDataGridViewTextBoxColumn
             // 
             this.yearDataGridViewTextBoxColumn.DataPropertyName = "Year";
@@ -292,12 +297,17 @@
             this.yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
             this.yearDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Days
+            // peopleBindingSource
             // 
-            this.Days.DataPropertyName = "Days";
-            this.Days.HeaderText = "Days";
-            this.Days.Name = "Days";
-            this.Days.ReadOnly = true;
+            this.peopleBindingSource.DataSource = typeof(WFAplicationVacation.Person);
+            // 
+            // personBindingSource1
+            // 
+            this.personBindingSource1.DataSource = typeof(WFAplicationVacation.Person);
+            // 
+            // personBindingSource
+            // 
+            this.personBindingSource.DataSource = typeof(WFAplicationVacation.Person);
             // 
             // Form1
             // 
@@ -347,6 +357,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TeamName;
         private System.Windows.Forms.DataGridViewTextBoxColumn yearDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Days;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TeamId;
     }
 }
 

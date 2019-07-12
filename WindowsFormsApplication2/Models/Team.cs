@@ -12,5 +12,10 @@ namespace WFAplicationVacation
         public string TeamName { get; set; }
         public int Year { get; set; }
         public int MinNumberWorkers { get; set; }
+        public virtual ICollection<Person> Workers { get; set; }
+        public Team()
+        {
+            Workers = new List<Person>();
+        }
     }
 }
