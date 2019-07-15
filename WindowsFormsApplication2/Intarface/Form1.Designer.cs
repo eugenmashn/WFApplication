@@ -38,28 +38,29 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.PersonGridView = new System.Windows.Forms.DataGridView();
             this.button12 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button13 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.TeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Days = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TeamId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Days = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.peopleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.personBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.personBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PersonGridView)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.personBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -143,26 +144,6 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.ShowDateWeekend);
             // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(546, 33);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(40, 23);
-            this.button10.TabIndex = 9;
-            this.button10.Text = "+day ";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.Addday);
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(511, 33);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(40, 23);
-            this.button9.TabIndex = 10;
-            this.button9.Text = "-day";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.SubtractDay);
-            // 
             // PersonGridView
             // 
             this.PersonGridView.AllowUserToAddRows = false;
@@ -186,11 +167,11 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.PersonGridView.DefaultCellStyle = dataGridViewCellStyle1;
-            this.PersonGridView.Location = new System.Drawing.Point(154, 29);
+            this.PersonGridView.Location = new System.Drawing.Point(129, 29);
             this.PersonGridView.Name = "PersonGridView";
             this.PersonGridView.ReadOnly = true;
             this.PersonGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PersonGridView.Size = new System.Drawing.Size(453, 230);
+            this.PersonGridView.Size = new System.Drawing.Size(469, 230);
             this.PersonGridView.TabIndex = 11;
             this.PersonGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PersonGridView_CellContentClick);
             // 
@@ -207,15 +188,14 @@
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.button13);
             this.panel1.Controls.Add(this.button11);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button12);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button10);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.button6);
@@ -245,20 +225,18 @@
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.ShowNameTeam);
             // 
-            // TeamName
+            // dataGridViewTextBoxColumn1
             // 
-            this.TeamName.DataPropertyName = "TeamId";
-            this.TeamName.HeaderText = "TeamName";
-            this.TeamName.Name = "TeamName";
-            this.TeamName.ReadOnly = true;
-            this.TeamName.Visible = false;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Team";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Team";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // Days
+            // dataGridViewTextBoxColumn2
             // 
-            this.Days.DataPropertyName = "Days";
-            this.Days.HeaderText = "Days";
-            this.Days.Name = "Days";
-            this.Days.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Team";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Team";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // TeamId
             // 
@@ -267,6 +245,21 @@
             this.TeamId.Name = "TeamId";
             this.TeamId.ReadOnly = true;
             this.TeamId.Visible = false;
+            // 
+            // Days
+            // 
+            this.Days.DataPropertyName = "Days";
+            this.Days.HeaderText = "Days";
+            this.Days.Name = "Days";
+            this.Days.ReadOnly = true;
+            // 
+            // TeamName
+            // 
+            this.TeamName.DataPropertyName = "TeamId";
+            this.TeamName.HeaderText = "TeamName";
+            this.TeamName.Name = "TeamName";
+            this.TeamName.ReadOnly = true;
+            this.TeamName.Visible = false;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -301,13 +294,23 @@
             // 
             this.peopleBindingSource.DataSource = typeof(WFAplicationVacation.Person);
             // 
+            // personBindingSource
+            // 
+            this.personBindingSource.DataSource = typeof(WFAplicationVacation.Person);
+            // 
             // personBindingSource1
             // 
             this.personBindingSource1.DataSource = typeof(WFAplicationVacation.Person);
             // 
-            // personBindingSource
+            // button9
             // 
-            this.personBindingSource.DataSource = typeof(WFAplicationVacation.Person);
+            this.button9.Location = new System.Drawing.Point(511, 33);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 16;
+            this.button9.Text = "Settengs";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.Settings);
             // 
             // Form1
             // 
@@ -325,8 +328,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonGridView)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.personBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -340,8 +343,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
         protected internal System.Windows.Forms.DataGridView PersonGridView;
         private System.Windows.Forms.BindingSource peopleBindingSource;
         private System.Windows.Forms.BindingSource personBindingSource1;
@@ -351,13 +352,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TeamName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Days;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TeamId;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TeamName;
         private System.Windows.Forms.DataGridViewTextBoxColumn yearDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Days;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TeamId;
+        private System.Windows.Forms.Button button9;
     }
 }
 

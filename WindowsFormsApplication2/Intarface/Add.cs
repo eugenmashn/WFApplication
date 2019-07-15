@@ -12,7 +12,7 @@ namespace WFAplicationVacation
 {
     public partial class Add : Form
     {
-        EFGenericRepository<Team> EFtems = new EFGenericRepository<Team>(new WorkerContext());
+        EFGenericRepository<Team> EFTeams = new EFGenericRepository<Team>(new WorkerContext());
      
         public Add()
         {
@@ -23,7 +23,7 @@ namespace WFAplicationVacation
         internal void Add_Load(object sender, EventArgs e)
         {
             Person people = new Person();
-            List<Team> list_teams = EFtems.Get().ToList();
+            List<Team> list_teams = EFTeams.Get().ToList();
         
             foreach (Team team in list_teams) {
                 comboBox1.Items.Add(team.TeamName);
@@ -53,7 +53,16 @@ namespace WFAplicationVacation
             people.LastName = textBox2.Text;
             people.Days = (int)numericUpDown1.Value;
             people.Year = (int)numericUpDown2.Value;
-            people.TeamId = EFtems.FindById(i => i.TeamName == comboBox1.Text).Id; 
+            
+            //REMOVE THIS CODE
+            var team = EFTeams.FindById(i => i.TeamName == comboBox1.Text);
+            people.TeamId = EFTeams.FindById(i => i.TeamName == comboBox1.Text).Id;
+
+
+
+            //
+            //people.Team = 
+            //people.TeamId = EFtems.FindById(i => i.TeamName == comboBox1.Text).Id; 
             this.PersonGet = people;
             this.Hide();
         }

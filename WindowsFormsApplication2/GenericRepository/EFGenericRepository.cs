@@ -8,7 +8,7 @@ namespace WFAplicationVacation
 {
     public class EFGenericRepository<TEntity>:IGenericRepository<TEntity> where TEntity:class
     {
-        DbContext _context;
+       private readonly DbContext _context;
         DbSet<TEntity> _dbSet;
 
         public EFGenericRepository(DbContext context) {
@@ -21,6 +21,12 @@ namespace WFAplicationVacation
         public TEntity FindById(Guid id) {
             
             return _dbSet.Find(id);
+        }
+
+
+        public IEnumerable<TEntity> GetEntities() {
+
+            return _dbSet.ToList();
         }
         public TEntity FindById(Func<TEntity, bool> predicate)
         {
@@ -39,6 +45,7 @@ namespace WFAplicationVacation
             _context.Entry(item).State = _context.Entry(item).State;
             _context.SaveChanges();
         }
+       
         public void Remove(TEntity item) {
             if (item != null)
             { 
@@ -62,7 +69,7 @@ namespace WFAplicationVacation
         public IEnumerable<TEntity> Get(Func<TEntity, bool> predicate) {
             return _dbSet.Where(predicate).ToList();
         }
-        public IEnumerable<TEntity> GetSort(Func<TEntity,Guid?> predicate)
+        public IEnumerable<TEntity> GetSort(Func<TEntity,string> predicate)
         {
             return _dbSet.AsNoTracking().OrderBy(predicate).ToList();
         }

@@ -133,30 +133,31 @@ namespace WFAplicationVacation
             holydayn.IndexDate = false;
             holydayn.SecontDate = dateTimePickerSecondDate.Value;
            
-            if ((CountTeam(person.Team.TeamName) - CountWeekend(holydayn.FirstDate, holydayn.SecontDate, person.Team.TeamName) <=team.MinNumberWorkers)&&((int)team.MinNumberWorkers!=0))
+            if ((CountTeam(person.Team.TeamName) - CountWeekend(holydayn.FirstDate, holydayn.SecontDate, person.Team.TeamName) <team.MinNumberWorkers) && team.MinNumberWorkers != 0)
             {
                 MessageBox.Show("Date busy");
                 return;
             }
+            int CountDaysHolyDays = 0;
             int IndexDay = 0;
             for (DateTime i = dateTimePickerFirstDate.Value.Date; i <= dateTimePickerSecondDate.Value.Date;)
             {
-                if (i.DayOfWeek != DayOfWeek.Sunday && i.DayOfWeek != DayOfWeek.Saturday && !AuditDate(i))
+                if (i.DayOfWeek == DayOfWeek.Sunday || i.DayOfWeek == DayOfWeek.Saturday || AuditDate(i))
                 {
                     IndexDay++;
-                    
+                    CountDaysHolyDays--;
                 }
-                
+                CountDaysHolyDays++;
    
               
                 i = i.AddDays(1);
             }
            
             holydayn.TeamName = person.Team.TeamName;
-            holydayn.Days = IndexDay;
-            Daysu = person.Days-holydayn.Days;
+            holydayn.Days = CountDaysHolyDays;
+            Daysu = person.Days - CountDaysHolyDays;
             person.Days = Daysu;
-            if (CountTeam(person.Team.TeamName) - CountWeekend(holydayn.FirstDate, holydayn.SecontDate, person.Team.TeamName) <= team.MinNumberWorkers && team.MinNumberWorkers!=0)
+            if (CountTeam(person.Team.TeamName) - CountWeekend(holydayn.FirstDate, holydayn.SecontDate, person.Team.TeamName) < team.MinNumberWorkers && team.MinNumberWorkers!=0)
             {
                 MessageBox.Show("Date busy");
                 return;

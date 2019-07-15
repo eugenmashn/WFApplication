@@ -25,8 +25,8 @@ namespace WFAplicationVacation
         public Form1()
         {
             InitializeComponent();
-            
-            PersonGridView.DataSource = workers.GetSort (u => u.TeamId);
+
+            PersonGridView.DataSource = workers.GetSort(u => u.Team.TeamName);
           this.PersonGridView.RowPrePaint += new DataGridViewRowPrePaintEventHandler(this.PaintRowrsFormOne);
         }
 
@@ -150,10 +150,10 @@ namespace WFAplicationVacation
             Guid Id = SearcId();
             PersonGridView.MultiSelect = true;
             PersonGridView.DataSource = null;
-            PersonGridView.DataSource = workers.GetSort(u => u.Team.Id);
+            PersonGridView.DataSource = workers.GetSort(u => u.Team.TeamName);
             foreach (DataGridViewRow rows in PersonGridView.Rows) {
                 if ((Guid)rows.Cells[0].Value == Id) {
-                    rows.Selected = true;
+                 //   rows.Selected = true;
                //     PersonGridView.CurrentCell =rows.Cells[0];
 
                 }
@@ -265,7 +265,7 @@ namespace WFAplicationVacation
         public void PaintRowrsFormOne(object sender, EventArgs e)
         {
             List<Person> persons = workers.Get().ToList();
-           List<Team> teams=EFtems.GetSort(i=>i.Id).ToList();
+           List<Team> teams=EFtems.GetSort(i=>i.TeamName).ToList();
            
           
             Color[] colors = new Color[5];
@@ -277,23 +277,27 @@ namespace WFAplicationVacation
 
             string TeamNameTwo = PersonGridView.Rows[0].Cells[1].Value.ToString();
             int indexColor = 0;
+            int indexTeam = 0;
             foreach (DataGridViewRow row in PersonGridView.Rows)
             {
-                
 
+                if (indexColor > 4)
+                    indexColor = 0;
 
-                if ((Guid)row.Cells[6].Value == teams[indexColor].Id)
+                if ((Guid)row.Cells[6].Value == teams[indexTeam].Id)
                 {
                     row.DefaultCellStyle.BackColor = colors[indexColor];
                  
                 }
                 else {
-
+                    indexTeam++;
                     indexColor++;
+                    if (indexColor > 4)
+                        indexColor = 0;
                     row.DefaultCellStyle.BackColor = colors[indexColor];
+                   
                 }
-                if (indexColor >= 4)
-                    indexColor = 0;
+                
             }
         }
 
@@ -332,6 +336,16 @@ namespace WFAplicationVacation
             }
 
            
+        }
+
+        private void Settings(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            DialogResult result = settings.ShowDialog(this);
+            if (result == DialogResult.OK) {
+                settings.Close();
+                return;
+            }
         }
     }
    

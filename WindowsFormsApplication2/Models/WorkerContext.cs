@@ -15,13 +15,13 @@ namespace WFAplicationVacation
         public DbSet<Person> Workers { get; set; }
         public DbSet<Weekend> HolyDays { get; set; }
         public DbSet<Team> Teams{ get; set; }
+        public DbSet<GlobalSetting> GlobalSettings { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Person>()
                  .HasRequired(s => s.Team)
                  .WithMany(g => g.Workers)
                  .HasForeignKey(fk => fk.TeamId);
-
         }
 
     }

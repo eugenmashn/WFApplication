@@ -55,6 +55,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201907150955187_GlobalSettings.cs" />
+    <Compile Include="Migrations\201907150955187_GlobalSettings.Designer.cs">
+      <DependentUpon>201907150955187_GlobalSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907151113122_GlobalSettingsTwo.cs" />
+    <Compile Include="Migrations\201907151113122_GlobalSettingsTwo.Designer.cs">
+      <DependentUpon>201907151113122_GlobalSettingsTwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GlobalSettings.cs" />
     <Compile Include="Intarface\ChangePerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +146,12 @@
     <Compile Include="Intarface\ShowNameTeam.Designer.cs">
       <DependentUpon>ShowNameTeam.cs</DependentUpon>
     </Compile>
+    <Compile Include="Intarface\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Intarface\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Intarface\ChangePerson.resx">
       <DependentUpon>ChangePerson.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +191,12 @@
     <EmbeddedResource Include="Migrations\201907121110138_onetomany.resx">
       <DependentUpon>201907121110138_onetomany.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907150955187_GlobalSettings.resx">
+      <DependentUpon>201907150955187_GlobalSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907151113122_GlobalSettingsTwo.resx">
+      <DependentUpon>201907151113122_GlobalSettingsTwo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -197,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Intarface\ShowNameTeam.resx">
       <DependentUpon>ShowNameTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Intarface\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\HolyDay.datasource" />
