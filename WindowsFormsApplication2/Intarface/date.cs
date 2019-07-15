@@ -13,10 +13,10 @@ namespace WFAplicationVacation
 
     public delegate void ONupdate();
  
-    public partial class date : Form
+    public partial class ShowVacation : Form
     {
         EFGenericRepository<Person> workers = new EFGenericRepository<Person>(new WorkerContext());
-        EFGenericRepository<Vacation> vacations = new EFGenericRepository<Vacation>(new WorkerContext());
+        EFGenericRepository<Vacation> EFVacations = new EFGenericRepository<Vacation>(new WorkerContext());
 
         public event ONupdate onupdate;
         Guid _Id;
@@ -33,19 +33,19 @@ namespace WFAplicationVacation
             }
         }
 
-        public date(Guid Id)
+        public ShowVacation(Guid Id)
         {
             InitializeComponent();
             _Id = Id;
-            if (vacations.Count(i=>i.Peopleid==_Id)<1)
+            if (EFVacations.Count(i=>i.Peopleid==_Id)<1)
             {
                MessageBox.Show("Don`t have weekend");
             }
             else {
                
             BindingSource DatedbOne = new BindingSource();
-            var DatedbOneK = vacations.Get(i => i.Peopleid == _Id);
-            personOfweekend = vacations.FindById(i => i.Peopleid == _Id);
+            var DatedbOneK = EFVacations.Get(i => i.Peopleid == _Id);
+            personOfweekend = EFVacations.FindById(i => i.Peopleid == _Id);
             if (personOfweekend == null)
                   return;
             checkBox1.Checked = personOfweekend.IndexDate;
@@ -74,12 +74,12 @@ namespace WFAplicationVacation
              
 
                Guid id =SearcId();
-               if (id == Form1.IdError)
+               if (id == MainForm.IdError)
                     return;
-            Vacation peoplday = vacations.FindById(c => c.Id == id);
+            Vacation peoplday = EFVacations.FindById(c => c.Id == id);
                 Person people = workers.FindById( c => c.Id == peoplday.Peopleid);
                 BindingSource DatedbOne = new BindingSource();
-            var DatedbOneK = vacations.Get(i => i.Peopleid == _Id);
+            var DatedbOneK = EFVacations.Get(i => i.Peopleid == _Id);
 
             if (peoplday.IndexDate == true)
                 {
@@ -90,8 +90,8 @@ namespace WFAplicationVacation
                    int DaysRegain = peoplday.Days;
                     people.Days += DaysRegain;
                     workers.Update(people);
-                    vacations.Remove(peoplday);
-                    DatedbOneK = vacations.Get(i => i.Peopleid == _Id);
+                    EFVacations.Remove(peoplday);
+                    DatedbOneK = EFVacations.Get(i => i.Peopleid == _Id);
                     var qieryAsList = new BindingList<Vacation>(DatedbOneK.ToList());
                     DatedbOne.DataSource = qieryAsList;
                     dataGridViewVacations.DataSource = DatedbOne;
@@ -104,13 +104,13 @@ namespace WFAplicationVacation
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             Guid id = SearcId();
-            if (id == Form1.IdError)
+            if (id == MainForm.IdError)
                 return;
-            Vacation peoplday = vacations.FindById(c => c.Id == id);
+            Vacation peoplday = EFVacations.FindById(c => c.Id == id);
             if (peoplday == null)
                 return;
                 peoplday.IndexDate = true;
-            vacations.Update(peoplday);
+            EFVacations.Update(peoplday);
          
 
 
@@ -122,7 +122,7 @@ namespace WFAplicationVacation
         }
          public Guid SearcId() {
 
-            Guid id = Form1.IdError;
+            Guid id = MainForm.IdError;
             if (dataGridViewVacations.SelectedRows.Count > 0)
             {
                id = (Guid)dataGridViewVacations.CurrentRow.Cells[0].Value;     

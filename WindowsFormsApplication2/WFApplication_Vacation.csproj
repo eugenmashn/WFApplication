@@ -102,11 +102,11 @@
     <Compile Include="Intarface\AddVacation.Designer.cs">
       <DependentUpon>AddVacation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Intarface\Form1.cs">
+    <Compile Include="Intarface\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Intarface\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Intarface\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201907101423533_InitialCreate.cs" />
     <Compile Include="Migrations\201907101423533_InitialCreate.Designer.cs">
@@ -170,8 +170,8 @@
     <EmbeddedResource Include="Intarface\AddVacation.resx">
       <DependentUpon>AddVacation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Intarface\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Intarface\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Intarface\newWeekendDatagridview.resx">
       <DependentUpon>newWeekendDatagridview.cs</DependentUpon>

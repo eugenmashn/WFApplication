@@ -1,6 +1,6 @@
 ﻿namespace WFAplicationVacation
 {
-    partial class AddHol
+    partial class AddVacation
     {
         /// <summary>
         /// Required designer variable.

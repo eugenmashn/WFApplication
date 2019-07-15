@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace WFAplicationVacation
 {
-    public partial class Add : Form
+    public partial class AddPerson : Form
     {
         EFGenericRepository<Team> EFTeams = new EFGenericRepository<Team>(new WorkerContext());
      
-        public Add()
+        public AddPerson()
         {
             InitializeComponent();
             
@@ -22,7 +22,7 @@ namespace WFAplicationVacation
 
         internal void Add_Load(object sender, EventArgs e)
         {
-            Person people = new Person();
+            Person person = new Person();
             List<Team> list_teams = EFTeams.Get().ToList();
         
             foreach (Team team in list_teams) {
@@ -47,23 +47,23 @@ namespace WFAplicationVacation
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Person people = new Person();
-            people.Id = Guid.NewGuid();
-            people.Name = textBox1.Text;
-            people.LastName = textBox2.Text;
-            people.Days = (int)numericUpDown1.Value;
-            people.Year = (int)numericUpDown2.Value;
+            Person person = new Person();
+            person.Id = Guid.NewGuid();
+            person.Name = textBox1.Text;
+            person.LastName = textBox2.Text;
+            person.Days = (int)numericUpDown1.Value;
+            person.Year = (int)numericUpDown2.Value;
             
             //REMOVE THIS CODE
             var team = EFTeams.FindById(i => i.TeamName == comboBox1.Text);
-            people.TeamId = EFTeams.FindById(i => i.TeamName == comboBox1.Text).Id;
+            person.TeamId = EFTeams.FindById(i => i.TeamName == comboBox1.Text).Id;
 
 
 
             //
             //people.Team = 
             //people.TeamId = EFtems.FindById(i => i.TeamName == comboBox1.Text).Id; 
-            this.PersonGet = people;
+            this.PersonGet = person;
             this.Hide();
         }
 

@@ -15,24 +15,24 @@ namespace WFAplicationVacation
         public AddnewWeekend()
         {
             InitializeComponent();
-            dateTimePicker1.Value = DateTime.Now;
-            dateTimePicker1.ValueChanged += Limited;
-            dateTimePicker2.MaxDate = dateTimePicker1.Value.AddDays(15);
-            dateTimePicker2.MinDate = dateTimePicker1.Value;
+            dateTimePickerStartDate.Value = DateTime.Now;
+            dateTimePickerStartDate.ValueChanged += Limited;
+            dateTimePickerEndDate.MaxDate = dateTimePickerStartDate.Value.AddDays(15);
+            dateTimePickerEndDate.MinDate = dateTimePickerStartDate.Value;
         }
         private void Limited(object sender, EventArgs e)
         {
-            DateTime CountDate = dateTimePicker1.Value;
-            if (dateTimePicker1.Value > dateTimePicker2.MaxDate)
+            DateTime CountDate = dateTimePickerStartDate.Value;
+            if (dateTimePickerStartDate.Value > dateTimePickerEndDate.MaxDate)
             {
-                dateTimePicker2.MaxDate = dateTimePicker1.Value.AddDays(15);
+                dateTimePickerEndDate.MaxDate = dateTimePickerStartDate.Value.AddDays(15);
             }
             else
             {
-                dateTimePicker2.MinDate = dateTimePicker1.Value;
+                dateTimePickerEndDate.MinDate = dateTimePickerStartDate.Value;
             }
-            dateTimePicker2.MinDate = dateTimePicker1.Value;
-            dateTimePicker2.MaxDate = dateTimePicker1.Value.AddDays(15);
+            dateTimePickerEndDate.MinDate = dateTimePickerStartDate.Value;
+            dateTimePickerEndDate.MaxDate = dateTimePickerStartDate.Value.AddDays(15);
         }
         private void Button2_Click(object sender, EventArgs e)
         {

@@ -1,6 +1,6 @@
 ﻿namespace WFAplicationVacation
 {
-    partial class date
+    partial class ShowVacation
     {
         /// <summary>
         /// Required designer variable.

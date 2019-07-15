@@ -31,7 +31,7 @@ namespace WFAplicationVacation
         public TEntity FindById(Func<TEntity, bool> predicate)
         {
             
-            var item=_dbSet.ToList().FirstOrDefault(predicate);
+            var item=_dbSet.FirstOrDefault(predicate);
                 
             return item;
         }

@@ -37,10 +37,6 @@ C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\
 C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.ChangePerson.resources
 C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.AddTeam.resources
 C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.AddnewWeekend.resources
-C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.date.resources
-C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.Add.resources
-C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.AddHol.resources
-C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.Form1.resources
 C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.newWeekendDatagridview.resources
 C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Migrations.InitialCreate.resources
 C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Migrations.NewTAble.resources
@@ -58,3 +54,7 @@ C:\Users\ema\source\repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\
 C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Migrations.GlobalSettings.resources
 C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.Settings.resources
 C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Migrations.GlobalSettingsTwo.resources
+C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.MainForm.resources
+C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.AddVacation.resources
+C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.ShowVacation.resources
+C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.AddPErson.resources

@@ -12,7 +12,7 @@ namespace WFAplicationVacation
 {
     public partial class AddTeam : Form
     {
-        EFGenericRepository<Team> teamEF = new EFGenericRepository<Team>(new WorkerContext());
+        EFGenericRepository<Team> EFTeam = new EFGenericRepository<Team>(new WorkerContext());
 
         public AddTeam()
         {
@@ -38,7 +38,7 @@ namespace WFAplicationVacation
             team.Id = Guid.NewGuid();
             team.Year = (int)numericUpDownYear.Value;
             team.MinNumberWorkers =(int)numericUpDownNumberWorks.Value;
-            teamEF.Create(team);
+            EFTeam.Create(team);
         }
 
         private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

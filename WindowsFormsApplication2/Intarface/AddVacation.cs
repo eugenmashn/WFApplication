@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace WFAplicationVacation
 {
-    public partial class AddHol : Form
+    public partial class AddVacation : Form
     {
         EFGenericRepository<Person> workers = new EFGenericRepository<Person>(new WorkerContext());
-        EFGenericRepository<Vacation> vacations = new EFGenericRepository<Vacation>(new WorkerContext());
-        EFGenericRepository<Weekend> holydays = new EFGenericRepository<Weekend>(new WorkerContext());
+        EFGenericRepository<Vacation> EFVacations = new EFGenericRepository<Vacation>(new WorkerContext());
+        EFGenericRepository<Weekend> EFHolydays = new EFGenericRepository<Weekend>(new WorkerContext());
         EFGenericRepository<Team> EFTeams = new EFGenericRepository<Team>(new WorkerContext());
 
         int Days;
         Guid Id;
-        public AddHol(Guid id)
+        public AddVacation(Guid id)
         {
             Id = id;
 
@@ -94,7 +94,7 @@ namespace WFAplicationVacation
     
         private bool AuditDate(DateTime date) {
             bool TrueorFalse=false;
-            List<Weekend> list= holydays.Get().ToList();
+            List<Weekend> list= EFHolydays.Get().ToList();
             foreach (var i in list) {
                 if (((DateTime.Compare(date.Date , i.startDate.Date)>=0) && DateTime.Compare(date.Date ,i.EndDate.Date)<=0) || (date == i.startDate)) {
                     TrueorFalse = true;
@@ -133,7 +133,7 @@ namespace WFAplicationVacation
             holydayn.IndexDate = false;
             holydayn.SecontDate = dateTimePickerSecondDate.Value;
            
-            if ((CountTeam(person.Team.TeamName) - CountWeekend(holydayn.FirstDate, holydayn.SecontDate, person.Team.TeamName) <team.MinNumberWorkers) && team.MinNumberWorkers != 0)
+            if ((CountTeam(person.Team.TeamName) - CountWeekend(holydayn.FirstDate, holydayn.SecontDate, person.Team.TeamName) <=team.MinNumberWorkers) && team.MinNumberWorkers != 0)
             {
                 MessageBox.Show("Date busy");
                 return;
@@ -157,7 +157,7 @@ namespace WFAplicationVacation
             holydayn.Days = CountDaysHolyDays;
             Daysu = person.Days - CountDaysHolyDays;
             person.Days = Daysu;
-            if (CountTeam(person.Team.TeamName) - CountWeekend(holydayn.FirstDate, holydayn.SecontDate, person.Team.TeamName) < team.MinNumberWorkers && team.MinNumberWorkers!=0)
+            if (CountTeam(person.Team.TeamName) - CountWeekend(holydayn.FirstDate, holydayn.SecontDate, person.Team.TeamName) <=team.MinNumberWorkers && team.MinNumberWorkers!=0)
             {
                 MessageBox.Show("Date busy");
                 return;
@@ -169,10 +169,11 @@ namespace WFAplicationVacation
         private int CountWeekend(DateTime StartDay, DateTime EndDay, string TeamName)
         {
             int Count = 0;
-            List<Vacation> list = vacations.Get(i => (ChackWeekend(StartDay, EndDay, i.FirstDate, i.SecontDate, TeamName,i.TeamName) )).ToList();
+            List<Vacation> list = EFVacations.Get(i => i.TeamName == TeamName).ToList();
+             List<Vacation> listTwo = list.Where(i => (ChackWeekend(StartDay, EndDay, i.FirstDate, i.SecontDate, TeamName,i.TeamName) )).ToList();
             if (list == null)
                 return 0;
-            Count = list.Count();
+            Count = listTwo.Count();
             return Count;
         }
         private int CountTeam(string TeamName)

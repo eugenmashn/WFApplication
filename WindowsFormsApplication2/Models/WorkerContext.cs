@@ -10,6 +10,7 @@ namespace WFAplicationVacation
     {
         public WorkerContext() : base("Workers")
         {
+            this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
         public DbSet<Vacation> Vacations { get; set; }
         public DbSet<Person> Workers { get; set; }

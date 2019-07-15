@@ -27,7 +27,7 @@ namespace WFAplicationVacation
         private void DeleteTeamName(object sender, EventArgs e)
         {
             Guid id = SearcId();
-            if (id == Form1.IdError)
+            if (id == MainForm.IdError)
                 return;
             Team team = EFtems.FindById(c => c.Id == id);
             BindingSource DatedbOne = new BindingSource();
@@ -54,7 +54,7 @@ namespace WFAplicationVacation
         public Guid SearcId()
         {
 
-            Guid id = Form1.IdError;
+            Guid id = MainForm.IdError;
             if (dataGridViewTeamName.SelectedRows.Count > 0)
             {
                 id = (Guid)dataGridViewTeamName.CurrentRow.Cells[0].Value;

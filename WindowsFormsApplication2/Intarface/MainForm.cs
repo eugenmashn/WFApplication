@@ -12,22 +12,25 @@ using System.Drawing;
 namespace WFAplicationVacation
 {
 
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         public static readonly Guid IdError = new Guid("5C60F693-BEF5-E011-A485-80EE7300C695");
        
         EFGenericRepository<Person> workers = new EFGenericRepository<Person>(new WorkerContext());
-        EFGenericRepository<Vacation> vacations = new EFGenericRepository<Vacation>(new WorkerContext());
-        EFGenericRepository<Weekend> holydays = new EFGenericRepository<Weekend>(new WorkerContext());
+        EFGenericRepository<Vacation> EFvacations = new EFGenericRepository<Vacation>(new WorkerContext());
+        EFGenericRepository<Weekend> EFweekends = new EFGenericRepository<Weekend>(new WorkerContext());
         EFGenericRepository<Team> EFtems = new EFGenericRepository<Team>(new WorkerContext());
 
-      
-        public Form1()
+        
+        List<Team> teams;
+        public MainForm()
         {
             InitializeComponent();
-
+            
+            teams = EFtems.GetSort(i => i.TeamName).ToList();
             PersonGridView.DataSource = workers.GetSort(u => u.Team.TeamName);
           this.PersonGridView.RowPrePaint += new DataGridViewRowPrePaintEventHandler(this.PaintRowrsFormOne);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -37,35 +40,33 @@ namespace WFAplicationVacation
            
         private void btnAddnewPerson(object sender, EventArgs e)
         {
-            Add addForm = new Add();
+            AddPerson addPerson = new AddPerson();
 
-            DialogResult result = addForm.ShowDialog(this);
+            DialogResult result = addPerson.ShowDialog(this);
             if (result == DialogResult.Cancel)
                 return;
-            Person person = addForm.PersonGet;
-            workers.Create(addForm.PersonGet);
+            Person person = addPerson.PersonGet;
+            workers.Create(addPerson.PersonGet);
        
-            evenstb();
-            addForm.Close();
+            UpdateDataGridView();
+            addPerson.Close();
         }
 
         public void btnAddVacation(object sender, EventArgs e)
         {
-             /*workers = new EFGenericRepository<Person>(new WorkerContext());
-            vacations = new EFGenericRepository<Vacation>(new WorkerContext());*/
-            Vacation holydayn = new Vacation();
+          
             Guid id = SearcId();
             if (id == IdError)
                 return;
-            AddHol addHolForm = new AddHol(id);
+            AddVacation addVacation = new AddVacation(id);
 
-            DialogResult result = addHolForm.ShowDialog(this);
+            DialogResult result = addVacation.ShowDialog(this);
           
-            if (addHolForm.GetVacation == null)
+            if (addVacation.GetVacation == null)
                 return;
-            vacations.Create(addHolForm.GetVacation);
-            addHolForm.Close();
-            evenstb();
+            EFvacations.Create(addVacation.GetVacation);
+            addVacation.Close();
+            UpdateDataGridView();
         }
 
         private void btnDeletePerson(object sender, EventArgs e)
@@ -73,13 +74,13 @@ namespace WFAplicationVacation
             Guid id = SearcId();
             if (id == IdError)
                 return;
-            Person peopl = workers.FindById(id);
-            if (peopl == null)
+            Person person = workers.FindById(id);
+            if (person == null)
             {
                 return;
             }
-            workers.Remove(peopl);
-            evenstb();
+            workers.Remove(person);
+            UpdateDataGridView();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -87,27 +88,26 @@ namespace WFAplicationVacation
 
         }
 
-        private void btnShowDate(object sender, EventArgs e)
+        private void btnShowVacation(object sender, EventArgs e)
         {
             Guid id = SearcId();
             if (id == IdError)
                 return;
-            date addHolForm = new date(id);
-            addHolForm.onupdate += new ONupdate(evenstb);
-            DialogResult result = addHolForm.ShowDialog(this);
+            ShowVacation ShowaddVacation = new ShowVacation(id);
+            ShowaddVacation.onupdate += new ONupdate(UpdateDataGridView);
+            DialogResult result = ShowaddVacation.ShowDialog(this);
             if (result == DialogResult.OK)
             {
-                addHolForm.onupdate -= evenstb;
-                addHolForm.Close();
+                ShowaddVacation.onupdate -= UpdateDataGridView;
+                ShowaddVacation.Close();
                 return;
             }
-
         }
 
         private void btnNextYear(object sender, EventArgs e)
         {
             Guid id = new Guid();
-            Add addForm = new Add();
+            AddPerson Changeperson = new AddPerson();
             int index = 0;
             if (PersonGridView.RowCount > workers.Count())
             {
@@ -120,14 +120,14 @@ namespace WFAplicationVacation
             for (int i = 0; i < index; i++)
             {
                 id = (Guid)PersonGridView[0, i].Value;
-                Person people = new Person();
-                Person peopleOne = new Person();
-                peopleOne = workers.FindById(id);
-                peopleOne.Days = (int)peopleOne.Days + 18;
-                peopleOne.Year = (int)peopleOne.Year + 1;
-                workers.Update(peopleOne);
+                Person person = new Person();
+                Person persenOne = new Person();
+                persenOne = workers.FindById(id);
+                persenOne.Days = (int)persenOne.Days + 18;
+                persenOne.Year = (int)persenOne.Year + 1;
+                workers.Update(persenOne);
             }
-            evenstb();
+            UpdateDataGridView();
         }
 
         private void btnSortDate(object sender, EventArgs e)
@@ -141,13 +141,13 @@ namespace WFAplicationVacation
             Sort sort = new Sort(id, person.Name, person.LastName);
             DialogResult result = sort.ShowDialog(this);
             sort.Close();
-        }
-      
-        void evenstb()
+        }    
+        void UpdateDataGridView()
         {
-            /* workers = new EFGenericRepository<Person>(new WorkerContext());
-             vacations = new EFGenericRepository<Vacation>(new WorkerContext());*/
+         
             Guid Id = SearcId();
+            List<Person> persons = workers.Get().ToList();
+            List<Team> teams = EFtems.GetSort(i => i.TeamName).ToList();
             PersonGridView.MultiSelect = true;
             PersonGridView.DataSource = null;
             PersonGridView.DataSource = workers.GetSort(u => u.Team.TeamName);
@@ -178,14 +178,14 @@ namespace WFAplicationVacation
         {
             Weekend newWeekend = new Weekend();
             AddnewWeekend newDateWeekend = new AddnewWeekend();
-            newDateWeekend.dateTimePicker1.Value = DateTime.Now;
-            newDateWeekend.dateTimePicker2.MaxDate = newDateWeekend.dateTimePicker1.Value.AddDays(5);
-            newDateWeekend.dateTimePicker2.MinDate = newDateWeekend.dateTimePicker1.Value;
+            newDateWeekend.dateTimePickerStartDate.Value = DateTime.Now;
+            newDateWeekend.dateTimePickerEndDate.MaxDate = newDateWeekend.dateTimePickerStartDate.Value.AddDays(5);
+            newDateWeekend.dateTimePickerEndDate.MinDate = newDateWeekend.dateTimePickerStartDate.Value;
             DialogResult result = newDateWeekend.ShowDialog(this);
             newWeekend.Id = Guid.NewGuid();
-            newWeekend.startDate = newDateWeekend.dateTimePicker1.Value;
-            newWeekend.EndDate = newDateWeekend.dateTimePicker2.Value;
-            holydays.Create(newWeekend);
+            newWeekend.startDate = newDateWeekend.dateTimePickerStartDate.Value;
+            newWeekend.EndDate = newDateWeekend.dateTimePickerEndDate.Value;
+            EFweekends.Create(newWeekend);
             newDateWeekend.Close();
         }
 
@@ -198,7 +198,7 @@ namespace WFAplicationVacation
         private bool AuditDate(DateTime date)
         {
             bool TrueorFalse = false;
-            List<Weekend> list = holydays.Get().ToList();
+            List<Weekend> list = EFweekends.Get().ToList();
             foreach (var i in list)
             {
                 if (((date.Date >= i.startDate.Date) && (date.Date <= i.EndDate.Date)) || (date.Date == i.startDate.Date))
@@ -217,11 +217,11 @@ namespace WFAplicationVacation
                 return;
             person.Days++;
             workers.Update(person);
-            evenstb();
+            UpdateDataGridView();
         }
         private int CountWeekend(DateTime StartDay, DateTime EndDay,string TeamName) {
             int Count = 0;
-            List<Vacation> list = vacations.Get(i=>(ChackWeekend(StartDay,EndDay,i.FirstDate,i.SecontDate)&&i.TeamName==TeamName)).ToList();
+            List<Vacation> list = EFvacations.Get(i=>(ChackWeekend(StartDay,EndDay,i.FirstDate,i.SecontDate)&&i.TeamName==TeamName)).ToList();
            
 
             if (list == null)
@@ -259,14 +259,14 @@ namespace WFAplicationVacation
                 return;
             person.Days--;
             workers.Update(person);
-            evenstb();
+            UpdateDataGridView();
 
         }
         public void PaintRowrsFormOne(object sender, EventArgs e)
         {
-            List<Person> persons = workers.Get().ToList();
+          /*  List<Person> persons = workers.Get().ToList();
            List<Team> teams=EFtems.GetSort(i=>i.TeamName).ToList();
-           
+           */
           
             Color[] colors = new Color[5];
             colors[0] = ColorTranslator.FromHtml("#87CEEB");
@@ -330,7 +330,7 @@ namespace WFAplicationVacation
             ChangePerson changePerson = new ChangePerson(id);
             DialogResult result = changePerson.ShowDialog(this);
             if (result == DialogResult.OK) {
-                evenstb();
+                UpdateDataGridView();
                 changePerson.Close();
                 return;
             }

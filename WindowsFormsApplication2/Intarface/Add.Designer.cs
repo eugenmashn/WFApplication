@@ -1,6 +1,6 @@
 ﻿namespace WFAplicationVacation
 {
-    partial class Add
+    partial class AddPerson
     {
         /// <summary>
         /// Required designer variable.

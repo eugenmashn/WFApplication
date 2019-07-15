@@ -32,8 +32,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // button2
@@ -84,20 +84,20 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(123, 104);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(99, 20);
-            this.dateTimePicker2.TabIndex = 11;
+            this.dateTimePickerEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerEndDate.Location = new System.Drawing.Point(123, 104);
+            this.dateTimePickerEndDate.Name = "dateTimePicker2";
+            this.dateTimePickerEndDate.Size = new System.Drawing.Size(99, 20);
+            this.dateTimePickerEndDate.TabIndex = 11;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(123, 54);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(99, 20);
-            this.dateTimePicker1.TabIndex = 10;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
+            this.dateTimePickerStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(123, 54);
+            this.dateTimePickerStartDate.Name = "dateTimePicker1";
+            this.dateTimePickerStartDate.Size = new System.Drawing.Size(99, 20);
+            this.dateTimePickerStartDate.TabIndex = 10;
+            this.dateTimePickerStartDate.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 
             // AddnewWeekend
             // 
@@ -109,8 +109,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePickerEndDate);
+            this.Controls.Add(this.dateTimePickerStartDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "AddnewWeekend";
@@ -127,7 +127,7 @@
         protected internal System.Windows.Forms.Button button1;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        protected internal System.Windows.Forms.DateTimePicker dateTimePicker2;
-        protected internal System.Windows.Forms.DateTimePicker dateTimePicker1;
+        protected internal System.Windows.Forms.DateTimePicker dateTimePickerEndDate;
+        protected internal System.Windows.Forms.DateTimePicker dateTimePickerStartDate;
     }
 }
