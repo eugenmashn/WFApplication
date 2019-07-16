@@ -26,7 +26,7 @@ namespace WFAplicationVacation
             List<Team> list_teams = EFTeams.Get().ToList();
         
             foreach (Team team in list_teams) {
-                comboBox1.Items.Add(team.TeamName);
+                comboBoxTeamName.Items.Add(team.TeamName);
             }
     
             
@@ -45,7 +45,7 @@ namespace WFAplicationVacation
 
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void btnOk(object sender, EventArgs e)
         {
             Person person = new Person();
             person.Id = Guid.NewGuid();
@@ -55,8 +55,11 @@ namespace WFAplicationVacation
             person.Year = DateTime.Now.Year;
             
             //REMOVE THIS CODE
-            var team = EFTeams.FindById(i => i.TeamName == comboBox1.Text);
-            person.TeamId = EFTeams.FindById(i => i.TeamName == comboBox1.Text).Id;
+            var team = EFTeams.FindById(i => i.TeamName == comboBoxTeamName.Text);
+            if (team != null)
+            {
+            person.TeamId = EFTeams.FindById(i => i.TeamName == comboBoxTeamName.Text).Id;
+            }
 
 
 

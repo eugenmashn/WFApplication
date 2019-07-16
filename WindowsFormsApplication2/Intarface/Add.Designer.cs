@@ -37,7 +37,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxTeamName = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,7 +113,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Ok";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.button1.Click += new System.EventHandler(this.btnOk);
             // 
             // button2
             // 
@@ -139,11 +139,11 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(108, 86);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(120, 21);
-            this.comboBox1.TabIndex = 13;
+            this.comboBoxTeamName.FormattingEnabled = true;
+            this.comboBoxTeamName.Location = new System.Drawing.Point(108, 86);
+            this.comboBoxTeamName.Name = "comboBox1";
+            this.comboBoxTeamName.Size = new System.Drawing.Size(120, 21);
+            this.comboBoxTeamName.TabIndex = 13;
             // 
             // AddPerson
             // 
@@ -151,7 +151,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxTeamName);
             this.Controls.Add(this.linkLabel5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -182,6 +182,6 @@
         protected internal System.Windows.Forms.Button button1;
         protected internal System.Windows.Forms.Button button2;
         private System.Windows.Forms.LinkLabel linkLabel5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxTeamName;
     }
 }

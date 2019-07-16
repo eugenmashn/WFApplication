@@ -30,7 +30,10 @@ namespace WFAplicationVacation
             {
                 comboBoxTeamaName.Items.Add(team.TeamName);
             }
-            comboBoxTeamaName.Text = person.Team.TeamName; 
+            if (person.Team != null)
+                comboBoxTeamaName.Text = person.Team.TeamName;
+            else
+                comboBoxTeamaName.Text = "";
             numericUpDownDays.Value = person.Days;
             numericUpDownYear.Value = person.Year;
 

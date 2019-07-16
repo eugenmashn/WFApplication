@@ -22,7 +22,8 @@ namespace WFAplicationVacation
             modelBuilder.Entity<Person>()
                  .HasRequired(s => s.Team)
                  .WithMany(g => g.Workers)
-                 .HasForeignKey(fk => fk.TeamId);
+                 .HasForeignKey(fk => fk.TeamId)
+                 .WillCascadeOnDelete(true); 
         }
 
     }

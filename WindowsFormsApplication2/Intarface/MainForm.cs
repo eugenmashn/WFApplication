@@ -25,6 +25,7 @@ namespace WFAplicationVacation
         List<Person> persons;
         List<Team> teams;
         List<string> teamsTwo;
+        bool IndexNull;
         public MainForm()
         {
             InitializeComponent();
@@ -33,13 +34,23 @@ namespace WFAplicationVacation
              teams = EFtems.GetSort(i => i.TeamName).ToList();
             foreach (Person person in persons)
             {
-
-                teamsTwo.Add((person.Team.TeamName).ToString());
+                if (person.Team != null)
+                    teamsTwo.Add((person.Team.TeamName).ToString());
+                else {
+                    IndexNull = true;
+                }
             }
-            teams = EFtems.Get(i => teamsTwo.Contains(i.TeamName)).OrderBy(i=>i.TeamName).ToList();
+            if (IndexNull != true)
+            {
 
-            PersonGridView.DataSource = workers.GetSort(u => u.Team.TeamName);
-          this.PersonGridView.RowPrePaint += new DataGridViewRowPrePaintEventHandler(this.PaintRowrsFormOne);
+                teams = EFtems.Get(i => teamsTwo.Contains(i.TeamName)).OrderBy(i => i.TeamName).ToList();
+                PersonGridView.DataSource = workers.GetSort(u => u.Team.TeamName);
+                this.PersonGridView.RowPrePaint += new DataGridViewRowPrePaintEventHandler(this.PaintRowrsFormOne);
+            }
+            else {
+                PersonGridView.DataSource = workers.Get();
+            }
+            
 
         }
 
@@ -161,33 +172,42 @@ namespace WFAplicationVacation
             teams = EFtems.GetSort(i => i.TeamName).ToList();
             PersonGridView.MultiSelect = true;
             PersonGridView.DataSource = null;
-           
+            IndexNull = true;
 
             foreach (Person person in persons)
             {
-
-                teamsTwo.Add(person.Team.TeamName);
-            }
-         
-            teams = EFtems.Get(i => teamsTwo.Contains(i.TeamName)).OrderBy(i => i.TeamName).ToList();
-            PersonGridView.DataSource = workers.GetSort(u => u.Team.TeamName);
-            PersonGridView.CurrentRow.Selected = false;
-            PersonGridView.ClearSelection();
-            int IndexRow = 0;
-        
-            foreach (DataGridViewRow rows in PersonGridView.Rows) {
-                IndexRow++;
-                if ((Guid)rows.Cells[0].Value == Id) {
-                    PersonGridView.CurrentRow.Selected = false;
-                      
-                    rows.Selected = true;
-                    break;
-                    //     PersonGridView.CurrentCell =rows.Cells[0];
-
-                   
+                if (person.Team != null)
+                { teamsTwo.Add(person.Team.TeamName); }
+                else {
+                    IndexNull = true;
                 }
             }
-            PersonGridView.CurrentCell = PersonGridView.Rows[IndexRow-1].Cells[4];
+            if (IndexNull != true)
+            {
+                teams = EFtems.Get(i => teamsTwo.Contains(i.TeamName)).OrderBy(i => i.TeamName).ToList();
+              
+                PersonGridView.DataSource = workers.GetSort(u => u.Team.TeamName);
+                PersonGridView.CurrentRow.Selected = false;
+                PersonGridView.ClearSelection();
+                int IndexRow = 0;
+
+                foreach (DataGridViewRow rows in PersonGridView.Rows)
+                {
+                    IndexRow++;
+                    if ((Guid)rows.Cells[0].Value == Id)
+                    {
+                        PersonGridView.CurrentRow.Selected = false;
+
+                        rows.Selected = true;
+                        break;
+                        //     PersonGridView.CurrentCell =rows.Cells[0];
+                    }
+                }
+                PersonGridView.CurrentCell = PersonGridView.Rows[IndexRow - 1].Cells[4];
+            }
+            else {
+                PersonGridView.DataSource = workers.Get();
+            }
         /*  PersonGridView.FirstDisplayedScrollingRowIndex = Index;
           PersonGridView.CurrentCell = PersonGridView.Rows[Index].Cells[3];*/
 
@@ -315,7 +335,10 @@ namespace WFAplicationVacation
 
                 if (indexColor > 4)
                     indexColor = 0;
-
+                if (row.Cells["TeamId"].Value == null) {
+                    row.DefaultCellStyle.BackColor = Color.Gray;
+                    return;
+                }
                 if ((Guid)row.Cells["TeamId"].Value == teams[indexTeam].Id)
                 {
                     row.DefaultCellStyle.BackColor = colors[indexColor];
@@ -349,7 +372,7 @@ namespace WFAplicationVacation
             DialogResult result = Showteam.ShowDialog(this);
             if (result == DialogResult.OK)
             {
-
+                UpdateDataGridView();
                 Showteam.Close();
                 return;
             }

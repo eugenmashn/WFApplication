@@ -48,12 +48,12 @@ namespace WFAplicationVacation
        
         public void Remove(TEntity item) {
             if (item != null)
-            { 
-               
-                   // _context.Entry(item).State = EntityState.Modified;
-                 //_dbSet.Attach(item);
-                 _dbSet.Remove(item);
-                 _context.SaveChanges();
+            {
+                //_context.Database.ExecuteSqlCommand("ALTER TABLE dbo.People ADD CONSTRAINT Peoples_Teams FOREIGN KEY (TeamId) REFERENCES dbo.Teams (Id) ON DELETE SET NULL");
+                // _context.Entry(item).State = EntityState.Modified;
+                //_dbSet.Attach(item);
+                _dbSet.Remove(item);
+                _context.SaveChanges();
                
             }
         }

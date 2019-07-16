@@ -15,9 +15,8 @@ namespace WFAplicationVacation
         public string Name { get; set; }
         public string LastName { get; set; }
         public int Days { get; set; }
-
-
-        public Guid TeamId { get; set; }
+   
+        public Guid? TeamId { get; set; }
 
     /*    [DataMember]
         [ForeignKey("TeamId")]*/

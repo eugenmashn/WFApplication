@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201907160605495_DeleteYearinTeam.Designer.cs">
       <DependentUpon>201907160605495_DeleteYearinTeam.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907161252294_Cascade delete1.cs" />
+    <Compile Include="Migrations\201907161252294_Cascade delete1.Designer.cs">
+      <DependentUpon>201907161252294_Cascade delete1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\GlobalSettings.cs" />
     <Compile Include="Intarface\ChangePerson.cs">
       <SubType>Form</SubType>
@@ -203,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907160605495_DeleteYearinTeam.resx">
       <DependentUpon>201907160605495_DeleteYearinTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161252294_Cascade delete1.resx">
+      <DependentUpon>201907161252294_Cascade delete1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

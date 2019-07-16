@@ -32,10 +32,10 @@ namespace WFAplicationVacation
             Team team = EFtems.FindById(c => c.Id == id);
             BindingSource DatedbOne = new BindingSource();
             var DatedbOneK = EFtems.Get();
-               EFtems.Remove(team);
-                DatedbOneK = EFtems.Get();
-                var qieryAsList = new BindingList<Team>(DatedbOneK.ToList());
-                DatedbOne.DataSource = qieryAsList;
+            EFtems.Remove(team);
+            DatedbOneK = EFtems.Get();
+            var qieryAsList = new BindingList<Team>(DatedbOneK.ToList());
+            DatedbOne.DataSource = qieryAsList;
             dataGridViewTeamName.DataSource = DatedbOne;
             dataGridViewTeamName.Update();
             dataGridViewTeamName.Refresh();
