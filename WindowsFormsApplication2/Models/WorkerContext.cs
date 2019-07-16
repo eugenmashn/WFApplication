@@ -20,10 +20,11 @@ namespace WFAplicationVacation
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Person>()
-                 .HasRequired(s => s.Team)
+                 .HasOptional(s => s.Team)
                  .WithMany(g => g.Workers)
                  .HasForeignKey(fk => fk.TeamId)
-                 .WillCascadeOnDelete(true); 
+                 .WillCascadeOnDelete(false);
+            //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
         }
 
     }

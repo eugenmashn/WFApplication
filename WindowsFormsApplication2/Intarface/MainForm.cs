@@ -21,13 +21,14 @@ namespace WFAplicationVacation
         EFGenericRepository<Weekend> EFweekends = new EFGenericRepository<Weekend>(new WorkerContext());
         EFGenericRepository<Team> EFtems = new EFGenericRepository<Team>(new WorkerContext());
         EFGenericRepository<GlobalSetting> EFSettings = new EFGenericRepository<GlobalSetting>(new WorkerContext());
-
+        WorkerContext _context = new WorkerContext();
         List<Person> persons;
         List<Team> teams;
         List<string> teamsTwo;
         bool IndexNull;
         public MainForm()
         {
+            _context.Database.ExecuteSqlCommand("ALTER TABLE dbo.People ADD CONSTRAINT Peoples_Teams FOREIGN KEY (TeamId) REFERENCES dbo.Teams (Id) ON DELETE SET NULL");
             InitializeComponent();
             teamsTwo = new List<string>();
              persons = workers.Get().ToList();
