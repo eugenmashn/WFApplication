@@ -46,16 +46,16 @@
             this.button11 = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.peopleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.personBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.TeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Days = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TeamId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Days = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TeamId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.peopleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.personBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PersonGridView)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).BeginInit();
@@ -248,17 +248,28 @@
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
-            // peopleBindingSource
+            // TeamName
             // 
-            this.peopleBindingSource.DataSource = typeof(WFAplicationVacation.Person);
+            this.TeamName.DataPropertyName = "TeamId";
+            this.TeamName.HeaderText = "TeamName";
+            this.TeamName.Name = "TeamName";
+            this.TeamName.ReadOnly = true;
+            this.TeamName.Visible = false;
             // 
-            // personBindingSource
+            // Days
             // 
-            this.personBindingSource.DataSource = typeof(WFAplicationVacation.Person);
+            this.Days.DataPropertyName = "Days";
+            this.Days.HeaderText = "Days";
+            this.Days.Name = "Days";
+            this.Days.ReadOnly = true;
             // 
-            // personBindingSource1
+            // TeamId
             // 
-            this.personBindingSource1.DataSource = typeof(WFAplicationVacation.Person);
+            this.TeamId.DataPropertyName = "TeamId";
+            this.TeamId.HeaderText = "TeamId";
+            this.TeamId.Name = "TeamId";
+            this.TeamId.ReadOnly = true;
+            this.TeamId.Visible = false;
             // 
             // idColumn
             // 
@@ -282,14 +293,6 @@
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
             this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // TeamName
-            // 
-            this.TeamName.DataPropertyName = "TeamId";
-            this.TeamName.HeaderText = "TeamName";
-            this.TeamName.Name = "TeamName";
-            this.TeamName.ReadOnly = true;
-            this.TeamName.Visible = false;
-            // 
             // yearDataGridViewTextBoxColumn
             // 
             this.yearDataGridViewTextBoxColumn.DataPropertyName = "Year";
@@ -297,20 +300,17 @@
             this.yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
             this.yearDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Days
+            // peopleBindingSource
             // 
-            this.Days.DataPropertyName = "Days";
-            this.Days.HeaderText = "Days";
-            this.Days.Name = "Days";
-            this.Days.ReadOnly = true;
+            this.peopleBindingSource.DataSource = typeof(WFAplicationVacation.Person);
             // 
-            // TeamId
+            // personBindingSource
             // 
-            this.TeamId.DataPropertyName = "TeamId";
-            this.TeamId.HeaderText = "TeamId";
-            this.TeamId.Name = "TeamId";
-            this.TeamId.ReadOnly = true;
-            this.TeamId.Visible = false;
+            this.personBindingSource.DataSource = typeof(WFAplicationVacation.Person);
+            // 
+            // personBindingSource1
+            // 
+            this.personBindingSource1.DataSource = typeof(WFAplicationVacation.Person);
             // 
             // MainForm
             // 

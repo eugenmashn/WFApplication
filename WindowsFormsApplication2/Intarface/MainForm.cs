@@ -161,22 +161,36 @@ namespace WFAplicationVacation
             teams = EFtems.GetSort(i => i.TeamName).ToList();
             PersonGridView.MultiSelect = true;
             PersonGridView.DataSource = null;
+           
 
             foreach (Person person in persons)
             {
 
                 teamsTwo.Add(person.Team.TeamName);
             }
+         
             teams = EFtems.Get(i => teamsTwo.Contains(i.TeamName)).OrderBy(i => i.TeamName).ToList();
             PersonGridView.DataSource = workers.GetSort(u => u.Team.TeamName);
+            PersonGridView.CurrentRow.Selected = false;
+            PersonGridView.ClearSelection();
+            int IndexRow = 0;
+        
             foreach (DataGridViewRow rows in PersonGridView.Rows) {
+                IndexRow++;
                 if ((Guid)rows.Cells[0].Value == Id) {
-                 //   rows.Selected = true;
-               //     PersonGridView.CurrentCell =rows.Cells[0];
+                    PersonGridView.CurrentRow.Selected = false;
+                      
+                    rows.Selected = true;
+                    break;
+                    //     PersonGridView.CurrentCell =rows.Cells[0];
 
+                   
                 }
             }
-          
+            PersonGridView.CurrentCell = PersonGridView.Rows[IndexRow-1].Cells[4];
+        /*  PersonGridView.FirstDisplayedScrollingRowIndex = Index;
+          PersonGridView.CurrentCell = PersonGridView.Rows[Index].Cells[3];*/
+
         }
         public Guid SearcId()
         {
