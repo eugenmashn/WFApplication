@@ -52,7 +52,7 @@ namespace WFAplicationVacation
             person.Name = textBox1.Text;
             person.LastName = textBox2.Text;
             person.Days = (int)numericUpDown1.Value;
-            person.Year = (int)numericUpDown2.Value;
+            person.Year = DateTime.Now.Year;
             
             //REMOVE THIS CODE
             var team = EFTeams.FindById(i => i.TeamName == comboBox1.Text);

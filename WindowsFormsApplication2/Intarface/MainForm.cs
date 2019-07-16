@@ -20,14 +20,24 @@ namespace WFAplicationVacation
         EFGenericRepository<Vacation> EFvacations = new EFGenericRepository<Vacation>(new WorkerContext());
         EFGenericRepository<Weekend> EFweekends = new EFGenericRepository<Weekend>(new WorkerContext());
         EFGenericRepository<Team> EFtems = new EFGenericRepository<Team>(new WorkerContext());
+        EFGenericRepository<GlobalSetting> EFSettings = new EFGenericRepository<GlobalSetting>(new WorkerContext());
 
-        
+        List<Person> persons;
         List<Team> teams;
+        List<string> teamsTwo;
         public MainForm()
         {
             InitializeComponent();
-            
-            teams = EFtems.GetSort(i => i.TeamName).ToList();
+            teamsTwo = new List<string>();
+             persons = workers.Get().ToList();
+             teams = EFtems.GetSort(i => i.TeamName).ToList();
+            foreach (Person person in persons)
+            {
+
+                teamsTwo.Add((person.Team.TeamName).ToString());
+            }
+            teams = EFtems.Get(i => teamsTwo.Contains(i.TeamName)).OrderBy(i=>i.TeamName).ToList();
+
             PersonGridView.DataSource = workers.GetSort(u => u.Team.TeamName);
           this.PersonGridView.RowPrePaint += new DataGridViewRowPrePaintEventHandler(this.PaintRowrsFormOne);
 
@@ -106,6 +116,7 @@ namespace WFAplicationVacation
 
         private void btnNextYear(object sender, EventArgs e)
         {
+            int Days = EFSettings.Get().ToList()[0].VacationDays;
             Guid id = new Guid();
             AddPerson Changeperson = new AddPerson();
             int index = 0;
@@ -123,7 +134,7 @@ namespace WFAplicationVacation
                 Person person = new Person();
                 Person persenOne = new Person();
                 persenOne = workers.FindById(id);
-                persenOne.Days = (int)persenOne.Days + 18;
+                persenOne.Days = (int)persenOne.Days + Days;
                 persenOne.Year = (int)persenOne.Year + 1;
                 workers.Update(persenOne);
             }
@@ -147,9 +158,16 @@ namespace WFAplicationVacation
          
             Guid Id = SearcId();
             List<Person> persons = workers.Get().ToList();
-            List<Team> teams = EFtems.GetSort(i => i.TeamName).ToList();
+            teams = EFtems.GetSort(i => i.TeamName).ToList();
             PersonGridView.MultiSelect = true;
             PersonGridView.DataSource = null;
+
+            foreach (Person person in persons)
+            {
+
+                teamsTwo.Add(person.Team.TeamName);
+            }
+            teams = EFtems.Get(i => teamsTwo.Contains(i.TeamName)).OrderBy(i => i.TeamName).ToList();
             PersonGridView.DataSource = workers.GetSort(u => u.Team.TeamName);
             foreach (DataGridViewRow rows in PersonGridView.Rows) {
                 if ((Guid)rows.Cells[0].Value == Id) {
@@ -284,7 +302,7 @@ namespace WFAplicationVacation
                 if (indexColor > 4)
                     indexColor = 0;
 
-                if ((Guid)row.Cells[6].Value == teams[indexTeam].Id)
+                if ((Guid)row.Cells["TeamId"].Value == teams[indexTeam].Id)
                 {
                     row.DefaultCellStyle.BackColor = colors[indexColor];
                  

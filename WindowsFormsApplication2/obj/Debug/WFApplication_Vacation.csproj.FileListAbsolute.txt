@@ -58,3 +58,4 @@ C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\
 C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.AddVacation.resources
 C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.ShowVacation.resources
 C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WFAplicationVacation.AddPErson.resources
+C:\Users\ema\Source\Repos\eugenmashn\WFApplication\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Migrations.DeleteYearinTeam.resources

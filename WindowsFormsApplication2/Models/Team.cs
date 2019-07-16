@@ -10,7 +10,7 @@ namespace WFAplicationVacation
     {
         public Guid Id { get; set; }
         public string TeamName { get; set; }
-        public int Year { get; set; }
+      //  public int Year { get; set; }
         public int MinNumberWorkers { get; set; }
         public virtual List<Person> Workers { get; set; }
     }

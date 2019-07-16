@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201907151113122_GlobalSettingsTwo.Designer.cs">
       <DependentUpon>201907151113122_GlobalSettingsTwo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907160605495_DeleteYearinTeam.cs" />
+    <Compile Include="Migrations\201907160605495_DeleteYearinTeam.Designer.cs">
+      <DependentUpon>201907160605495_DeleteYearinTeam.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\GlobalSettings.cs" />
     <Compile Include="Intarface\ChangePerson.cs">
       <SubType>Form</SubType>
@@ -196,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907151113122_GlobalSettingsTwo.resx">
       <DependentUpon>201907151113122_GlobalSettingsTwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907160605495_DeleteYearinTeam.resx">
+      <DependentUpon>201907160605495_DeleteYearinTeam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -36,7 +36,7 @@ namespace WFAplicationVacation
             Team team = new Team();
             team.TeamName = TextBoxTeamNameText.Text;
             team.Id = Guid.NewGuid();
-            team.Year = (int)numericUpDownYear.Value;
+            //team.Year = (int)numericUpDownYear.Value;
             team.MinNumberWorkers =(int)numericUpDownNumberWorks.Value;
             EFTeam.Create(team);
         }
