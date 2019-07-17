@@ -302,15 +302,15 @@
             // 
             // peopleBindingSource
             // 
-            this.peopleBindingSource.DataSource = typeof(WFAplicationVacation.Person);
+            this.peopleBindingSource.DataSource = typeof(DataAccessLayer.Models.Person);
             // 
             // personBindingSource
             // 
-            this.personBindingSource.DataSource = typeof(WFAplicationVacation.Person);
+            this.personBindingSource.DataSource = typeof(DataAccessLayer.Models.Person);
             // 
             // personBindingSource1
             // 
-            this.personBindingSource1.DataSource = typeof(WFAplicationVacation.Person);
+            this.personBindingSource1.DataSource = typeof(DataAccessLayer.Models.Person);
             // 
             // MainForm
             // 

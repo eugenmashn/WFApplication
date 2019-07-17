@@ -12,6 +12,9 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,31 +58,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201907150955187_GlobalSettings.cs" />
-    <Compile Include="Migrations\201907150955187_GlobalSettings.Designer.cs">
-      <DependentUpon>201907150955187_GlobalSettings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907151113122_GlobalSettingsTwo.cs" />
-    <Compile Include="Migrations\201907151113122_GlobalSettingsTwo.Designer.cs">
-      <DependentUpon>201907151113122_GlobalSettingsTwo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907160605495_DeleteYearinTeam.cs" />
-    <Compile Include="Migrations\201907160605495_DeleteYearinTeam.Designer.cs">
-      <DependentUpon>201907160605495_DeleteYearinTeam.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907161252294_Cascade delete1.cs" />
-    <Compile Include="Migrations\201907161252294_Cascade delete1.Designer.cs">
-      <DependentUpon>201907161252294_Cascade delete1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907161414543_Cascade delete2.cs" />
-    <Compile Include="Migrations\201907161414543_Cascade delete2.Designer.cs">
-      <DependentUpon>201907161414543_Cascade delete2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907170821052_Sql query.cs" />
-    <Compile Include="Migrations\201907170821052_Sql query.Designer.cs">
-      <DependentUpon>201907170821052_Sql query.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GlobalSettings.cs" />
     <Compile Include="Intarface\ChangePerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,8 +76,6 @@
     <Compile Include="Intarface\AddnewWeekend.Designer.cs">
       <DependentUpon>AddnewWeekend.cs</DependentUpon>
     </Compile>
-    <Compile Include="GenericRepository\EFGenericRepository.cs" />
-    <Compile Include="GenericRepository\IGenericRepository.cs" />
     <Compile Include="Intarface\date.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,38 +100,12 @@
     <Compile Include="Intarface\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907101423533_InitialCreate.cs" />
-    <Compile Include="Migrations\201907101423533_InitialCreate.Designer.cs">
-      <DependentUpon>201907101423533_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907110647360_NewTAble.cs" />
-    <Compile Include="Migrations\201907110647360_NewTAble.Designer.cs">
-      <DependentUpon>201907110647360_NewTAble.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907111048225_AddMinNumberWorks.cs" />
-    <Compile Include="Migrations\201907111048225_AddMinNumberWorks.Designer.cs">
-      <DependentUpon>201907111048225_AddMinNumberWorks.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907111346333_Rename.cs" />
-    <Compile Include="Migrations\201907111346333_Rename.Designer.cs">
-      <DependentUpon>201907111346333_Rename.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907121110138_onetomany.cs" />
-    <Compile Include="Migrations\201907121110138_onetomany.Designer.cs">
-      <DependentUpon>201907121110138_onetomany.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Weekend.cs" />
-    <Compile Include="Models\Vacation.cs" />
-    <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\WorkerContext.cs" />
     <Compile Include="Intarface\Sort.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Intarface\Sort.Designer.cs">
       <DependentUpon>Sort.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Team.cs" />
     <Compile Include="Intarface\ShowNameTeam.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,39 +142,6 @@
     <EmbeddedResource Include="Intarface\newWeekendDatagridview.resx">
       <DependentUpon>newWeekendDatagridview.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907101423533_InitialCreate.resx">
-      <DependentUpon>201907101423533_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907110647360_NewTAble.resx">
-      <DependentUpon>201907110647360_NewTAble.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907111048225_AddMinNumberWorks.resx">
-      <DependentUpon>201907111048225_AddMinNumberWorks.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907111346333_Rename.resx">
-      <DependentUpon>201907111346333_Rename.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907121110138_onetomany.resx">
-      <DependentUpon>201907121110138_onetomany.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907150955187_GlobalSettings.resx">
-      <DependentUpon>201907150955187_GlobalSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907151113122_GlobalSettingsTwo.resx">
-      <DependentUpon>201907151113122_GlobalSettingsTwo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907160605495_DeleteYearinTeam.resx">
-      <DependentUpon>201907160605495_DeleteYearinTeam.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907161252294_Cascade delete1.resx">
-      <DependentUpon>201907161252294_Cascade delete1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907161414543_Cascade delete2.resx">
-      <DependentUpon>201907161414543_Cascade delete2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907170821052_Sql query.resx">
-      <DependentUpon>201907170821052_Sql query.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -240,6 +157,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Intarface\Sort.resx">
       <DependentUpon>Sort.cs</DependentUpon>
@@ -271,7 +189,12 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{d85ddca0-b865-439e-b92f-0cf6b5b33a8c}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

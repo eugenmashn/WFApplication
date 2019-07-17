@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
+using DataAccessLayer;
+using DataAccessLayer.Models;
+using DataAccessLayer.EFGenericRepository;
+
 namespace WFAplicationVacation
 {
     public partial class Sort : Form

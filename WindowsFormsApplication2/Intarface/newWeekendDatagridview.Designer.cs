@@ -71,7 +71,7 @@
             // 
             // holyDayBindingSource
             // 
-            this.holyDayBindingSource.DataSource = typeof(WFAplicationVacation.Weekend);
+            this.holyDayBindingSource.DataSource = typeof(DataAccessLayer.Models.Weekend);
             // 
             // button1
             // 

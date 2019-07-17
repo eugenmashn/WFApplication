@@ -103,7 +103,7 @@
             // 
             // teamBindingSource
             // 
-            this.teamBindingSource.DataSource = typeof(WFAplicationVacation.Team);
+            this.teamBindingSource.DataSource = typeof(DataAccessLayer.Models.Team);
             // 
             // button1
             // 

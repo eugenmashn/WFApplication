@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
 using System.Drawing;
+using DataAccessLayer;
+using DataAccessLayer.Models;
+using DataAccessLayer.EFGenericRepository;
+
 namespace WFAplicationVacation
 {
 
@@ -28,7 +32,7 @@ namespace WFAplicationVacation
         bool IndexNull;
         public MainForm()
         {
-            _context.Database.ExecuteSqlCommand("ALTER TABLE dbo.People ADD CONSTRAINT Peoples_Teams FOREIGN KEY (TeamId) REFERENCES dbo.Teams (Id) ON DELETE SET NULL");
+           // _context.Database.ExecuteSqlCommand("ALTER TABLE dbo.People ADD CONSTRAINT Peoples_Teams FOREIGN KEY (TeamId) REFERENCES dbo.Teams (Id) ON DELETE SET NULL");
             InitializeComponent();
             teamsTwo = new List<string>();
              persons = workers.Get().ToList();

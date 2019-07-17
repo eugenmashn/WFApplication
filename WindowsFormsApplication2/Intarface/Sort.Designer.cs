@@ -135,7 +135,7 @@
             // 
             // holyDayBindingSource
             // 
-            this.holyDayBindingSource.DataSource = typeof(WFAplicationVacation.Vacation);
+            this.holyDayBindingSource.DataSource = typeof(DataAccessLayer.Models.Vacation);
             // 
             // linkLabel2
             // 
@@ -164,7 +164,7 @@
             // 
             // peopleBindingSource
             // 
-            this.peopleBindingSource.DataSource = typeof(WFAplicationVacation.Person);
+            this.peopleBindingSource.DataSource = typeof(DataAccessLayer.Models.Person);
             // 
             // idDataGridViewTextBoxColumn
             // 

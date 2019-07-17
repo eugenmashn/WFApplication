@@ -108,7 +108,7 @@
             // 
             // holyDayBindingSource
             // 
-            this.holyDayBindingSource.DataSource = typeof(WFAplicationVacation.Vacation);
+            this.holyDayBindingSource.DataSource = typeof(DataAccessLayer.Models.Vacation);
             // 
             // idDataGridViewTextBoxColumn
             // 
