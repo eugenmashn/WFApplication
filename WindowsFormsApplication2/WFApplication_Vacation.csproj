@@ -75,6 +75,10 @@
     <Compile Include="Migrations\201907161414543_Cascade delete2.Designer.cs">
       <DependentUpon>201907161414543_Cascade delete2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907170821052_Sql query.cs" />
+    <Compile Include="Migrations\201907170821052_Sql query.Designer.cs">
+      <DependentUpon>201907170821052_Sql query.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\GlobalSettings.cs" />
     <Compile Include="Intarface\ChangePerson.cs">
       <SubType>Form</SubType>
@@ -217,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907161414543_Cascade delete2.resx">
       <DependentUpon>201907161414543_Cascade delete2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907170821052_Sql query.resx">
+      <DependentUpon>201907170821052_Sql query.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
